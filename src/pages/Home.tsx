@@ -11,7 +11,7 @@ export default function Home() {
       <section className="relative flex min-h-screen items-center overflow-hidden">
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src="/background-video.mp4"
+          src={`${import.meta.env.BASE_URL}background-video.mp4`}
           autoPlay
           muted
           loop
