@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  İncir Ofset — Tasarım Tokenları                                     */
+/*  Not: Renkler Figma'dan yaklaşık alındı; PNG export gelince          */
+/*  birebir kalibre edilecek.                                           */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Marka lacivert tonları (hero overlay + koyu bölümler) */
+  --color-navy-950: #061426;
+  --color-navy-900: #0a2038;
+  --color-navy-800: #10304f;
+  --color-navy-700: #17436c;
+
+  /* Vurgu mavisi */
+  --color-brand-500: #2f6fb0;
+  --color-brand-400: #4b8fd6;
+  --color-brand-300: #7db4e6;
+
+  /* Nötrler */
+  --color-ink: #101828;
+  --color-muted: #667085;
+  --color-line: #e4e7ec;
+  --color-surface: #f7f9fc;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Poppins', 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+}
