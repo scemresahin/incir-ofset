@@ -1,13 +1,11 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, Gauge, PenTool, Truck, CreditCard,
   Search, ClipboardCheck, Printer, PackageCheck,
-  MapPin, Phone, Mail,
 } from 'lucide-react'
 import { PAGES, FEATURES, PROCESS, REFERENCES, type PageConfig } from '../data/pages'
-import { CONTACT } from '../data/site'
 import { galleryFor } from '../lib/assets'
+import ContactSection from './ContactSection'
 
 const FEATURE_ICONS = [Gauge, PenTool, Truck, CreditCard]
 const PROCESS_ICONS = [Search, ClipboardCheck, Printer, PackageCheck]
@@ -145,21 +143,24 @@ function ProcessSteps() {
             Bir fikirden teslimata uzanan yol — ilk temastan sonuca yanınızdayız.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((p, i) => {
             const Icon = PROCESS_ICONS[i]
             return (
-              <div key={p.title} className="rounded-2xl border border-line bg-surface p-6">
-                <div className="flex items-center justify-between">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-navy-900 text-white">
-                    <Icon size={20} />
+              <div
+                key={p.title}
+                className="group flex h-full flex-col rounded-2xl border border-line bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-300 hover:shadow-xl"
+              >
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-navy-800 text-white shadow-md">
+                    <Icon size={22} />
                   </div>
-                  <span className="font-heading text-3xl font-extrabold text-line">
-                    0{i + 1}
+                  <span className="rounded-full bg-brand-500/10 px-2.5 py-1 font-heading text-xs font-bold tracking-wide text-brand-500">
+                    ADIM 0{i + 1}
                   </span>
                 </div>
-                <h3 className="mt-4 font-bold text-ink">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted">{p.text}</p>
+                <h3 className="font-heading text-lg font-bold text-ink">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{p.text}</p>
               </div>
             )
           })}
@@ -183,82 +184,6 @@ function References() {
               {r}
             </span>
           ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ------------------------ İletişim Formu ------------------------ */
-function ContactSection() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [message, setMessage] = useState('')
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const body = [
-      `Ad Soyad: ${name}`,
-      `E-posta: ${email}`,
-      `Telefon: ${phone}`,
-      '',
-      message,
-    ].join('\n')
-    window.location.href = `${CONTACT.emailHref}?subject=${encodeURIComponent(
-      'İletişim Formu',
-    )}&body=${encodeURIComponent(body)}`
-  }
-
-  const inputCls =
-    'w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-colors focus:border-brand-400 focus:outline-none'
-
-  return (
-    <section id="iletisim" className="bg-navy-900 py-20">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 md:px-6 lg:grid-cols-2">
-        <div>
-          <h2 className="font-heading text-3xl font-extrabold text-white">İletişim Formu</h2>
-          <p className="mt-2 text-white/60">
-            Formu gönderin, ekibimiz en kısa sürede size dönsün.
-          </p>
-          <form onSubmit={submit} className="mt-6 space-y-3">
-            <input required value={name} onChange={(e) => setName(e.target.value)} placeholder="Ad Soyad" className={inputCls} />
-            <div className="grid gap-3 sm:grid-cols-2">
-              <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-posta" className={inputCls} />
-              <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Telefon" className={inputCls} />
-            </div>
-            <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Mesajınız" rows={4} className={inputCls} />
-            <button type="submit" className="w-full rounded-xl bg-brand-500 px-4 py-3.5 font-semibold text-white transition-colors hover:bg-brand-400">
-              Gönder
-            </button>
-          </form>
-        </div>
-
-        <div>
-          <div className="h-64 overflow-hidden rounded-2xl border border-white/10">
-            <iframe
-              title="İncir Ofset konum"
-              src="https://www.google.com/maps?q=Gebze,Kocaeli&output=embed"
-              className="h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <div className="mt-4 rounded-2xl border border-white/10 bg-navy-800 p-5 text-sm text-white/70">
-            <div className="font-semibold text-white">Merkez Ofis</div>
-            <div className="mt-3 flex items-start gap-2">
-              <MapPin size={16} className="mt-0.5 shrink-0 text-brand-400" />
-              {CONTACT.address}
-            </div>
-            <div className="mt-2 flex items-center gap-2">
-              <Phone size={16} className="text-brand-400" />
-              <a href={CONTACT.phoneHref} className="hover:text-white">{CONTACT.phone}</a>
-            </div>
-            <div className="mt-2 flex items-center gap-2">
-              <Mail size={16} className="text-brand-400" />
-              <a href={CONTACT.emailHref} className="hover:text-white">{CONTACT.email}</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
