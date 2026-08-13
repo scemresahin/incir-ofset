@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------
 //  İncir Ofset — site geneli veri (navigasyon, hizmetler, iletişim)
-//  Metinler placeholder olarak yazıldı; Figma export'u gelince güncellenecek.
+//  Ana ekran çipleri Figma/sagu-web referansıyla birebir.
 // ---------------------------------------------------------------------------
 
 export type NavLink = { label: string; to: string }
@@ -13,6 +13,22 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'İletişim', to: '/iletisim' },
 ]
 
+// Ana ekrandaki 3 büyük kategori butonu → iç sayfalara gider
+export const CATEGORIES: NavLink[] = [
+  { label: 'Matbaa', to: '/matbaa' },
+  { label: 'Promosyon', to: '/promosyon' },
+  { label: 'Reklam', to: '/reklam' },
+]
+
+// Ana ekranda yatay kayan çipler (Figma ile birebir sıra)
+export const TAGS = [
+  'etiket', 'ikaz levhaları', 'kumlama folyo', 'ledbox', 'örümcek stand', 'mesh branda',
+  'reklam dubaları', 'branda afiş', 'yelken bayrak', 'rollup', 'lightbox', 'promosyon ürünleri',
+  'tanıtım standı', 'kartvizit', 'oneway cam giydirme', 'flyer', 'masa bayrağı', 'katalog', 'broşür',
+  'araç magnetleri', 'nfc kart', 'folyo kaplama', 'kırlangıç bayrak', 'fuar hazırlıkları', 'tabela',
+  'marka oluşturma', 'logo tasarımı', 'totem',
+] as const
+
 export const CONTACT = {
   company: 'İncir Ofset',
   phone: '+90 262 643 44 80',
@@ -20,7 +36,7 @@ export const CONTACT = {
   email: 'info@incirofset.com.tr',
   emailHref: 'mailto:info@incirofset.com.tr',
   city: 'Kocaeli',
-  address: 'Kocaeli, Türkiye', // Tam adres Figma/İncir Ofset bilgisine göre güncellenecek
+  address: 'Hacı Halil Mh. Menzilhane Cd. No:4 Gebze - Kocaeli, TR',
 }
 
 export type Service = {
@@ -29,18 +45,12 @@ export type Service = {
   slug: string
 }
 
-// Hero'daki hizmet etiketlerinden derlendi
+// İç sayfalarda kullanılan genel hizmet listesi (şimdilik)
 export const SERVICES: Service[] = [
-  { title: 'Reklam Dubaları', slug: 'reklam-dubalari', desc: 'Dikkat çeken açık hava reklam dubaları.' },
-  { title: 'Branda & Afiş', slug: 'branda-afis', desc: 'Dış mekâna dayanıklı branda ve afiş baskıları.' },
-  { title: 'Yelken Bayrak', slug: 'yelken-bayrak', desc: 'Fuar ve etkinlikler için yelken bayraklar.' },
-  { title: 'Rollup', slug: 'rollup', desc: 'Taşınabilir rollup ve banner sistemleri.' },
-  { title: 'Masa Bayrağı', slug: 'masa-bayragi', desc: 'Kurumsal masa bayrağı üretimi.' },
   { title: 'Katalog', slug: 'katalog', desc: 'Kurumsal katalog tasarımı ve baskısı.' },
   { title: 'Broşür', slug: 'brosur', desc: 'El ilanı ve broşür baskı çözümleri.' },
-  { title: 'Araç Magnetleri', slug: 'arac-magnetleri', desc: 'Araç giydirme ve magnet uygulamaları.' },
+  { title: 'Kartvizit', slug: 'kartvizit', desc: 'Özel kesim ve kaplama kartvizitler.' },
   { title: 'Tabela', slug: 'tabela', desc: 'Işıklı ve kutu harf tabela üretimi.' },
-  { title: 'Marka Oluşturma', slug: 'marka-olusturma', desc: 'Sıfırdan kurumsal kimlik oluşturma.' },
-  { title: 'Logo Tasarımı', slug: 'logo-tasarimi', desc: 'Özgün ve akılda kalıcı logo tasarımı.' },
   { title: 'Totem', slug: 'totem', desc: 'Yönlendirme ve reklam totemleri.' },
+  { title: 'Logo Tasarımı', slug: 'logo-tasarimi', desc: 'Özgün ve akılda kalıcı logo tasarımı.' },
 ]

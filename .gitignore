@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Geçici görsel çalışma dosyaları (kontakt föy / ham zip)
+/asset/_raw/
+/asset/*.zip
+/public/_raw/
+/public/_contact.html
